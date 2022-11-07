@@ -1,6 +1,7 @@
 package net.djdannel.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.djdannel.tutorialmod.block.ModBlocks;
 import net.djdannel.tutorialmod.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,7 +23,10 @@ public class TutorialMod
     public TutorialMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
