@@ -3,6 +3,7 @@ package net.djdannel.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.djdannel.tutorialmod.block.ModBlocks;
 import net.djdannel.tutorialmod.item.ModItems;
+import net.djdannel.tutorialmod.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -29,13 +30,17 @@ public class TutorialMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModVillagers.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        event.enqueueWork(() -> {
+            ModVillagers.registerPOIs();
+        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
