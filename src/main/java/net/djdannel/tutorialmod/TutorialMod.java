@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import net.djdannel.tutorialmod.block.ModBlocks;
 import net.djdannel.tutorialmod.item.ModItems;
 import net.djdannel.tutorialmod.villager.ModVillagers;
+import net.djdannel.tutorialmod.world.feature.ModConfiguredFeatures;
+import net.djdannel.tutorialmod.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -31,6 +33,9 @@ public class TutorialMod
         ModBlocks.register(modEventBus);
 
         ModVillagers.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
